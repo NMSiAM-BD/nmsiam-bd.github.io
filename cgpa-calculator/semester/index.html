@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-calculator"></i> CGPA Calculator</h1>
+        <p>Calculate your CGPA </p>
+    </header>
+    <div class="container">
+        <div class="left-column">
+            <div class="card">
+                <h2>Courses</h2>
+                <table class="courses-table">
+                    <thead>
+                        <tr>
+                            <th>Course Name</th>
+                            <th>Credit</th>
+                            <th>Grade Point</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="coursesTable">
+                        <!-- Initial rows will be added by JavaScript -->
+                    </tbody>
+                </table>
+                
+                <div class="btn-container">
+                    <button class="btn-primary" id="addCourse">
+                        <i class="fas fa-plus fa-icon"></i> Add Course
+                    </button>
+                    <button class="btn-secondary" id="resetAll">
+                        <i class="fas fa-redo fa-icon"></i> Reset All
+                    </button>
+                </div>
+                
+                <div class="checkbox-container">
+                    <input type="checkbox" id="autoCalculate" checked>
+                    <label for="autoCalculate">Auto-calculate as I make changes</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-column">
+            <div class="card">
+                <h2><i class="fas fa-calculator"></i> Calculate CGPA</h2>
+                
+                <div class="results-section">
+                    <div class="cgpa-label">CGPA</div>
+                    <div class="cgpa-display" id="cgpaValue">0.00</div>
+                    <div class="out-of">Out of 4.00</div>
+                    
+                    <div class="percentage" id="percentageValue">0%</div>
+                </div>
+                
+                <button class="calculate-btn" id="calculateBtn">
+                    <i class="fas fa-calculator fa-icon"></i> Calculate CGPA
+                </button>
+                
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-value" id="totalCourses">3</div>
+                        <div class="stat-label">Total Courses</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="totalCredits">0</div>
+                        <div class="stat-label">Total Credits</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="totalGradePoints">0</div>
+                        <div class="stat-label">Total Grade<div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+      Copyright © 2025, <a href="https://www.nmsiam.com.bd"> N M SiAM - Noor Mohammad Siam </a>.
+    </footer>
