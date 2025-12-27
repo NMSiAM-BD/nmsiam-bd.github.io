@@ -1,0 +1,302 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaeaea;
+            font-size: 1.8rem;
+        }
+        
+        .courses-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+        
+        .courses-table th, .courses-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .courses-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .courses-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .courses-table th:nth-child(1) {
+            width: 35%;
+        }
+        
+        .courses-table th:nth-child(2),
+        .courses-table th:nth-child(3) {
+            width: 22%;
+        }
+        
+        .courses-table th:nth-child(4) {
+            width: 10%;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: border 0.3s;
+            height: 42px;
+        }
+        
+        input:focus {
+            border-color: #4b6cb7;
+            outline: none;
+        }
+        
+        input::placeholder {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: #4b6cb7;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3a5ca9;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        .calculate-btn {
+            background-color: #27ae60;
+            color: white;
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .calculate-btn:hover {
+            background-color: #219653;
+            transform: translateY(-2px);
+        }
+        
+        .results-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .cgpa-display {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+        
+        .cgpa-label {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        
+        .out-of {
+            font-size: 1.1rem;
+            color: #95a5a6;
+            margin-bottom: 25px;
+        }
+        
+        .percentage {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #27ae60;
+            margin: 15px 0;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eaeaea;
+        }
+        
+        .stat-box {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4b6cb7;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+        
+        .formula {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            padding: 20px;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .checkbox-container input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .checkbox-container label {
+            cursor: pointer;
+        }
+        
+        .fa-icon {
+            font-size: 1.2rem;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px 10px;
+            border-radius: 4px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 42px;
+            width: 42px;
+        }
+        
+        .action-btn:hover {
+            background-color: rgba(231, 76, 60, 0.1);
+            transform: scale(1.1);
+        }
+        
+        .error-input {
+            border-color: #e74c3c !important;
+            background-color: rgba(231, 76, 60, 0.05);
+        }
+        
+        .table-footer {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #ddd;
+        }
+    
