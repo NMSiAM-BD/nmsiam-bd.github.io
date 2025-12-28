@@ -1,4 +1,4 @@
- 
+
         // Initialize with 3 courses when page loads
         document.addEventListener('DOMContentLoaded', function() {
             initializeCourses();
@@ -195,3 +195,4 @@
                 document.getElementById('percentageValue').style.color = '#27ae60';
             }
         }
+
