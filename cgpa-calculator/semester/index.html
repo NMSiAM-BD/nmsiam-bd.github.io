@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="main-container">
+    
+      <div class="main-container">
         <header>
             <h1>CGPA Calculator</h1>
             <p>Calculate your CGPA</p>
@@ -17,7 +18,7 @@
             <div class="card">
                 <h2>Courses</h2>
                 
-                <table class="courses-table">
+                <table class="courses-table" id="coursesTable">
                     <thead>
                         <tr>
                             <th>Course Name</th>
@@ -26,7 +27,7 @@
                             <th class="action-cell">Action</th>
                         </tr>
                     </thead>
-                    <tbody id="coursesTable">
+                    <tbody id="coursesTableBody">
                         <!-- Courses will be added here by JavaScript -->
                     </tbody>
                 </table>
@@ -81,8 +82,7 @@
             <p>Copyright © 2025, N.M.SIAM • Noor Mohammad Siam.</p>
             <p>nmsiam-bd.github.io/cgpa-calc</p>
         </footer>
-    </div>
-        
+    </div>  
 <script src="script.js"></script>
 </body>
         </html>
