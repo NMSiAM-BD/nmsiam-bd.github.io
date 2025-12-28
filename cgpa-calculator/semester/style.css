@@ -44,7 +44,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-bottom: 30px;
-            align-items: stretch; /* Important: Make cards stretch to same height */
+            align-items: stretch;
         }
         
         @media (max-width: 768px) {
@@ -73,14 +73,14 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            height: 100%; /* Take full height of grid cell */
+            min-height: 400px; /* Minimum height */
         }
         
         @media (max-width: 768px) {
             .card {
                 padding: 20px;
                 margin-bottom: 0;
-                height: auto;
+                min-height: auto;
             }
         }
         
@@ -90,7 +90,15 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #f0f0f0;
-            flex-shrink: 0; /* Don't shrink heading */
+            flex-shrink: 0;
+        }
+        
+        /* Courses Card Content */
+        .courses-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1; /* Take available space */
+            overflow: visible;
         }
         
         /* Courses Table */
@@ -98,7 +106,6 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
-            flex-grow: 1; /* Allow table to grow */
         }
         
         .courses-table th {
@@ -189,7 +196,7 @@
             display: flex;
             gap: 15px;
             margin-bottom: 20px;
-            flex-shrink: 0; /* Don't shrink buttons */
+            flex-shrink: 0;
         }
         
         @media (max-width: 768px) {
@@ -247,7 +254,7 @@
             align-items: center;
             gap: 10px;
             margin-top: 10px;
-            flex-shrink: 0; /* Don't shrink checkbox */
+            flex-shrink: 0;
         }
         
         .checkbox-container input {
@@ -261,17 +268,17 @@
             font-size: 0.95rem;
         }
         
-        /* Results Section - FLEXIBLE HEIGHT */
+        /* Results Section */
         .results-card {
             display: flex;
             flex-direction: column;
-            height: 100%; /* Take full height */
+            min-height: 400px; /* Same minimum height */
         }
         
         .cgpa-display {
             text-align: center;
             margin: 20px 0;
-            flex-shrink: 0; /* Don't shrink CGPA display */
+            flex-shrink: 0;
         }
         
         .cgpa-value {
@@ -319,7 +326,7 @@
             padding: 15px;
             margin-top: 10px;
             font-size: 1.1rem;
-            flex-shrink: 0; /* Don't shrink button */
+            flex-shrink: 0;
         }
         
         .btn-calculate:hover {
@@ -327,14 +334,14 @@
             transform: translateY(-2px);
         }
         
-        /* Stats Row - Will move down as card grows */
+        /* Stats Row */
         .stats-row {
             display: flex;
             justify-content: space-between;
-            margin-top: auto; /* Pushes to bottom */
+            margin-top: auto; /* Push to bottom */
             padding-top: 20px;
             border-top: 2px solid #f0f0f0;
-            flex-shrink: 0; /* Don't shrink */
+            flex-shrink: 0;
         }
         
         @media (max-width: 768px) {
@@ -399,6 +406,10 @@
             .content-wrapper {
                 display: flex;
                 flex-direction: column;
+            }
+            
+            .courses-content {
+                flex: none;
             }
         }
     
