@@ -1,4 +1,4 @@
-
+ 
         // Initialize with 3 courses when page loads
         document.addEventListener('DOMContentLoaded', function() {
             initializeCourses();
@@ -50,7 +50,7 @@
             // Add event listener to delete button
             const deleteBtn = row.querySelector('.delete-btn');
             deleteBtn.addEventListener('click', function() {
-                const table = document.getElementById('coursesTable');
+                const table = document.getElementById('coursesTableBody');
                 if (table.children.length > 1) {
                     row.remove();
                     updateCourseNames();
@@ -67,7 +67,7 @@
         
         // Function to update course names after deletion
         function updateCourseNames() {
-            const rows = document.querySelectorAll('#coursesTable tr');
+            const rows = document.querySelectorAll('#coursesTableBody tr');
             rows.forEach((row, index) => {
                 const courseNameInput = row.querySelector('.course-name');
                 // Only update if it's still a default name
@@ -84,7 +84,7 @@
         
         // Initialize with 3 default courses
         function initializeCourses() {
-            const table = document.getElementById('coursesTable');
+            const table = document.getElementById('coursesTableBody');
             table.innerHTML = '';
             
             for (let i = 1; i <= 3; i++) {
@@ -98,7 +98,7 @@
         
         // Add Course Button
         document.getElementById('addCourse').addEventListener('click', function() {
-            const table = document.getElementById('coursesTable');
+            const table = document.getElementById('coursesTableBody');
             courseCounter++;
             const newRow = createCourseRow(courseCounter);
             table.appendChild(newRow);
@@ -130,7 +130,7 @@
         
         // Main calculation function
         function calculateCGPA() {
-            const rows = document.querySelectorAll('#coursesTable tr');
+            const rows = document.querySelectorAll('#coursesTableBody tr');
             let totalCredits = 0;
             let totalGradePoints = 0;
             let validCourses = 0;
