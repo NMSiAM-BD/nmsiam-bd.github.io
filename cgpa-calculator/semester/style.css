@@ -18,11 +18,14 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
         
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
         }
         
         header h1 {
@@ -46,6 +49,17 @@
         @media (max-width: 768px) {
             .content-wrapper {
                 grid-template-columns: 1fr;
+                gap: 25px;
+                margin-bottom: 25px;
+            }
+            
+            .main-container {
+                padding: 15px;
+                gap: 25px;
+            }
+            
+            body {
+                padding: 15px;
             }
         }
         
@@ -54,6 +68,14 @@
             border-radius: 12px;
             padding: 25px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            width: 100%;
+        }
+        
+        @media (max-width: 768px) {
+            .card {
+                padding: 20px;
+                margin-bottom: 0;
+            }
         }
         
         .card h2 {
@@ -69,11 +91,12 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            table-layout: fixed;
         }
         
         .courses-table th {
             text-align: left;
-            padding: 12px 15px;
+            padding: 12px 10px;
             background-color: #f8f9fa;
             color: #2c3e50;
             font-weight: 600;
@@ -81,12 +104,26 @@
         }
         
         .courses-table td {
-            padding: 12px 15px;
+            padding: 12px 10px;
             border-bottom: 1px solid #f0f0f0;
         }
         
         .courses-table tr:last-child td {
             border-bottom: none;
+        }
+        
+        @media (max-width: 768px) {
+            .courses-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .courses-table th,
+            .courses-table td {
+                padding: 10px 8px;
+                font-size: 0.9rem;
+            }
         }
         
         .course-input {
@@ -153,8 +190,15 @@
             margin-bottom: 20px;
         }
         
+        @media (max-width: 768px) {
+            .btn-group {
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+        }
+        
         .btn {
-            padding: 12px 24px;
+            padding: 12px 20px;
             border: none;
             border-radius: 8px;
             font-size: 1rem;
@@ -165,12 +209,19 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            flex: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .btn {
+                padding: 10px 15px;
+                font-size: 0.95rem;
+            }
         }
         
         .btn-add {
             background-color: #4b6cb7;
             color: white;
-            flex: 1;
         }
         
         .btn-add:hover {
@@ -181,7 +232,6 @@
         .btn-reset {
             background-color: #e74c3c;
             color: white;
-            flex: 1;
         }
         
         .btn-reset:hover {
@@ -205,6 +255,7 @@
         .checkbox-container label {
             color: #7f8c8d;
             cursor: pointer;
+            font-size: 0.95rem;
         }
         
         /* Results Section */
@@ -226,6 +277,12 @@
             margin: 10px 0;
         }
         
+        @media (max-width: 768px) {
+            .cgpa-value {
+                font-size: 3.5rem;
+            }
+        }
+        
         .cgpa-label {
             font-size: 1.1rem;
             color: #7f8c8d;
@@ -243,6 +300,12 @@
             font-weight: 700;
             color: #27ae60;
             margin: 15px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .percentage {
+                font-size: 1.8rem;
+            }
         }
         
         .btn-calculate {
@@ -268,15 +331,29 @@
             border-top: 2px solid #f0f0f0;
         }
         
+        @media (max-width: 768px) {
+            .stats-row {
+                margin-top: 25px;
+                padding-top: 15px;
+            }
+        }
+        
         .stat-item {
             text-align: center;
             flex: 1;
+            padding: 0 5px;
         }
         
         .stat-value {
             font-size: 1.8rem;
             font-weight: 700;
             color: #4b6cb7;
+        }
+        
+        @media (max-width: 768px) {
+            .stat-value {
+                font-size: 1.6rem;
+            }
         }
         
         .stat-label {
@@ -288,11 +365,12 @@
         /* Footer */
         footer {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 20px;
             padding-top: 20px;
             border-top: 1px solid #eaeaea;
             color: #7f8c8d;
             font-size: 0.9rem;
+            width: 100%;
         }
         
         footer p {
@@ -308,5 +386,25 @@
         /* Icons */
         .icon {
             font-size: 1rem;
+        }
+        
+        /* Mobile specific fixes */
+        @media (max-width: 768px) {
+            .courses-table {
+                min-width: 100%;
+            }
+            
+            .card:first-child {
+                order: 1;
+            }
+            
+            .card:last-child {
+                order: 2;
+            }
+            
+            .content-wrapper {
+                display: flex;
+                flex-direction: column;
+            }
         }
     
