@@ -7,34 +7,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1><i class="fas fa-calculator"></i> CGPA Calculator</h1>
-        <p>Calculate your CGPA </p>
-    </header>
-    <div class="container">
-        <div class="left-column">
+    <div class="main-container">
+        <header>
+            <h1>CGPA Calculator</h1>
+            <p>Calculate your CGPA</p>
+        </header>
+        
+        <div class="content-wrapper">
             <div class="card">
                 <h2>Courses</h2>
+                
                 <table class="courses-table">
                     <thead>
                         <tr>
                             <th>Course Name</th>
                             <th>Credit</th>
                             <th>Grade Point</th>
-                            <th>Action</th>
+                            <th class="action-cell">Action</th>
                         </tr>
                     </thead>
                     <tbody id="coursesTable">
-                        <!-- Initial rows will be added by JavaScript -->
+                        <!-- Courses will be added here dynamically -->
                     </tbody>
                 </table>
                 
-                <div class="btn-container">
-                    <button class="btn-primary" id="addCourse">
-                        <i class="fas fa-plus fa-icon"></i> Add Course
+                <div class="btn-group">
+                    <button class="btn btn-add" id="addCourse">
+                        <i class="fas fa-plus"></i> Add Course
                     </button>
-                    <button class="btn-secondary" id="resetAll">
-                        <i class="fas fa-redo fa-icon"></i> Reset All
+                    <button class="btn btn-reset" id="resetAll">
+                        <i class="fas fa-redo"></i> Reset All
                     </button>
                 </div>
                 
@@ -43,47 +45,44 @@
                     <label for="autoCalculate">Auto-calculate as I make changes</label>
                 </div>
             </div>
-        </div>
-        
-        <div class="right-column">
-            <div class="card">
-                <h2><i class="fas fa-calculator"></i> Calculate CGPA</h2>
+            
+            <div class="card results-card">
+                <h2>Calculate CGPA</h2>
                 
-                <div class="results-section">
+                <div class="cgpa-display">
                     <div class="cgpa-label">CGPA</div>
-                    <div class="cgpa-display" id="cgpaValue">0.00</div>
+                    <div class="cgpa-value" id="cgpaValue">0.00</div>
                     <div class="out-of">Out of 4.00</div>
-                    
                     <div class="percentage" id="percentageValue">0%</div>
                 </div>
                 
-                <button class="calculate-btn" id="calculateBtn">
-                    <i class="fas fa-calculator fa-icon"></i> Calculate CGPA
+                <button class="btn btn-calculate" id="calculateBtn">
+                    <i class="fas fa-calculator"></i> Calculate CGPA
                 </button>
                 
-                <div class="stats">
-                    <div class="stat-box">
+                <div class="stats-row">
+                    <div class="stat-item">
                         <div class="stat-value" id="totalCourses">3</div>
                         <div class="stat-label">Total Courses</div>
                     </div>
-                    <div class="stat-box">
-                        <div class="stat-value" id="totalCredits">0</div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalCredits">0.0</div>
                         <div class="stat-label">Total Credits</div>
                     </div>
-                    <div class="stat-box">
-                        <div class="stat-value" id="totalGradePoints">0</div>
-                        <div class="stat-label">Total Grade<div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalGradePoints">0.00</div>
+                        <div class="stat-label">Σ(Credit × Grade)</div>
                     </div>
                 </div>
-                
-                
             </div>
         </div>
+        
+        <footer>
+            <p>Copyright © 2025, N.M.SIAM • Noor Mohammad Siam.</p>
+            <p>nmsiam-bd.github.io/cgpa-calc</p>
+        </footer>
     </div>
-    
-    <footer>
-      Copyright © 2025, <a href="https://www.nmsiam.com.bd"> N M SiAM - Noor Mohammad Siam </a>.
-    </footer>
+        
 <script src="script.js"></script>
 </body>
         </html>
