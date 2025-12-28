@@ -44,7 +44,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-bottom: 30px;
-            align-items: stretch;
+            align-items: start; /* Align at top, not stretch */
         }
         
         @media (max-width: 768px) {
@@ -52,7 +52,6 @@
                 grid-template-columns: 1fr;
                 gap: 25px;
                 margin-bottom: 25px;
-                align-items: normal;
             }
             
             .main-container {
@@ -73,14 +72,12 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            min-height: 400px; /* Minimum height */
         }
         
         @media (max-width: 768px) {
             .card {
                 padding: 20px;
                 margin-bottom: 0;
-                min-height: auto;
             }
         }
         
@@ -93,12 +90,11 @@
             flex-shrink: 0;
         }
         
-        /* Courses Card Content */
+        /* Courses Card */
         .courses-content {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            flex: 1; /* Take available space */
-            overflow: visible;
         }
         
         /* Courses Table */
@@ -106,6 +102,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            flex-grow: 1; /* Allow table to grow with content */
         }
         
         .courses-table th {
@@ -268,11 +265,19 @@
             font-size: 0.95rem;
         }
         
-        /* Results Section */
+        /* Results Card - GROWS FROM BOTTOM */
         .results-card {
             display: flex;
             flex-direction: column;
-            min-height: 400px; /* Same minimum height */
+            justify-content: flex-start; /* Start from top */
+            min-height: 400px; /* Minimum height */
+        }
+        
+        .results-top-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Keep CGPA at top */
         }
         
         .cgpa-display {
@@ -334,11 +339,11 @@
             transform: translateY(-2px);
         }
         
-        /* Stats Row */
+        /* Stats Row - Will move down as card grows */
         .stats-row {
             display: flex;
             justify-content: space-between;
-            margin-top: auto; /* Push to bottom */
+            margin-top: 20px;
             padding-top: 20px;
             border-top: 2px solid #f0f0f0;
             flex-shrink: 0;
@@ -346,7 +351,7 @@
         
         @media (max-width: 768px) {
             .stats-row {
-                margin-top: 25px;
+                margin-top: 15px;
                 padding-top: 15px;
             }
         }
@@ -408,8 +413,8 @@
                 flex-direction: column;
             }
             
-            .courses-content {
-                flex: none;
+            .results-card {
+                min-height: 350px;
             }
         }
     
