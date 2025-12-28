@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-      <div class="main-container">
+    <div class="main-container">
         <header>
             <h1>CGPA Calculator</h1>
             <p>Calculate your CGPA</p>
@@ -18,32 +17,34 @@
             <div class="card">
                 <h2>Courses</h2>
                 
-                <table class="courses-table" id="coursesTable">
-                    <thead>
-                        <tr>
-                            <th>Course Name</th>
-                            <th>Credit</th>
-                            <th>Grade Point</th>
-                            <th class="action-cell">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="coursesTableBody">
-                        <!-- Courses will be added here by JavaScript -->
-                    </tbody>
-                </table>
-                
-                <div class="btn-group">
-                    <button class="btn btn-add" id="addCourse">
-                        <span class="icon">+</span> Add Course
-                    </button>
-                    <button class="btn btn-reset" id="resetAll">
-                        <span class="icon">↻</span> Reset All
-                    </button>
-                </div>
-                
-                <div class="checkbox-container">
-                    <input type="checkbox" id="autoCalculate" checked>
-                    <label for="autoCalculate">Auto-calculate as I make changes</label>
+                <div class="courses-content">
+                    <table class="courses-table" id="coursesTable">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Credit</th>
+                                <th>Grade Point</th>
+                                <th class="action-cell">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="coursesTableBody">
+                            <!-- Courses will be added here by JavaScript -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-add" id="addCourse">
+                            <span class="icon">+</span> Add Course
+                        </button>
+                        <button class="btn btn-reset" id="resetAll">
+                            <span class="icon">↻</span> Reset All
+                        </button>
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="autoCalculate" checked>
+                        <label for="autoCalculate">Auto-calculate as I make changes</label>
+                    </div>
                 </div>
             </div>
             
@@ -82,7 +83,8 @@
             <p>Copyright © 2025, N.M.SIAM • Noor Mohammad Siam.</p>
             <p>nmsiam-bd.github.io/cgpa-calc</p>
         </footer>
-    </div>  
+    </div>
+      
 <script src="script.js"></script>
 </body>
         </html>
