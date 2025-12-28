@@ -44,6 +44,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-bottom: 30px;
+            align-items: stretch; /* Important: Make cards stretch to same height */
         }
         
         @media (max-width: 768px) {
@@ -51,6 +52,7 @@
                 grid-template-columns: 1fr;
                 gap: 25px;
                 margin-bottom: 25px;
+                align-items: normal;
             }
             
             .main-container {
@@ -69,12 +71,16 @@
             padding: 25px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Take full height of grid cell */
         }
         
         @media (max-width: 768px) {
             .card {
                 padding: 20px;
                 margin-bottom: 0;
+                height: auto;
             }
         }
         
@@ -84,19 +90,20 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #f0f0f0;
+            flex-shrink: 0; /* Don't shrink heading */
         }
         
-        /* Courses Table Styles */
+        /* Courses Table */
         .courses-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
-            table-layout: fixed;
+            flex-grow: 1; /* Allow table to grow */
         }
         
         .courses-table th {
             text-align: left;
-            padding: 12px 10px;
+            padding: 12px 15px;
             background-color: #f8f9fa;
             color: #2c3e50;
             font-weight: 600;
@@ -104,7 +111,7 @@
         }
         
         .courses-table td {
-            padding: 12px 10px;
+            padding: 12px 15px;
             border-bottom: 1px solid #f0f0f0;
         }
         
@@ -113,15 +120,9 @@
         }
         
         @media (max-width: 768px) {
-            .courses-table {
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
-            }
-            
             .courses-table th,
             .courses-table td {
-                padding: 10px 8px;
+                padding: 10px 12px;
                 font-size: 0.9rem;
             }
         }
@@ -188,6 +189,7 @@
             display: flex;
             gap: 15px;
             margin-bottom: 20px;
+            flex-shrink: 0; /* Don't shrink buttons */
         }
         
         @media (max-width: 768px) {
@@ -245,6 +247,7 @@
             align-items: center;
             gap: 10px;
             margin-top: 10px;
+            flex-shrink: 0; /* Don't shrink checkbox */
         }
         
         .checkbox-container input {
@@ -258,20 +261,21 @@
             font-size: 0.95rem;
         }
         
-        /* Results Section */
+        /* Results Section - FLEXIBLE HEIGHT */
         .results-card {
             display: flex;
             flex-direction: column;
-            height: 100%;
+            height: 100%; /* Take full height */
         }
         
         .cgpa-display {
             text-align: center;
             margin: 20px 0;
+            flex-shrink: 0; /* Don't shrink CGPA display */
         }
         
         .cgpa-value {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
             color: #2c3e50;
             margin: 10px 0;
@@ -279,7 +283,7 @@
         
         @media (max-width: 768px) {
             .cgpa-value {
-                font-size: 3.5rem;
+                font-size: 3rem;
             }
         }
         
@@ -296,7 +300,7 @@
         }
         
         .percentage {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #27ae60;
             margin: 15px 0;
@@ -304,7 +308,7 @@
         
         @media (max-width: 768px) {
             .percentage {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
         }
         
@@ -315,6 +319,7 @@
             padding: 15px;
             margin-top: 10px;
             font-size: 1.1rem;
+            flex-shrink: 0; /* Don't shrink button */
         }
         
         .btn-calculate:hover {
@@ -322,13 +327,14 @@
             transform: translateY(-2px);
         }
         
-        /* Stats Row */
+        /* Stats Row - Will move down as card grows */
         .stats-row {
             display: flex;
             justify-content: space-between;
-            margin-top: 30px;
+            margin-top: auto; /* Pushes to bottom */
             padding-top: 20px;
             border-top: 2px solid #f0f0f0;
+            flex-shrink: 0; /* Don't shrink */
         }
         
         @media (max-width: 768px) {
@@ -345,14 +351,14 @@
         }
         
         .stat-value {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #4b6cb7;
         }
         
         @media (max-width: 768px) {
             .stat-value {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
         }
         
@@ -390,18 +396,6 @@
         
         /* Mobile specific fixes */
         @media (max-width: 768px) {
-            .courses-table {
-                min-width: 100%;
-            }
-            
-            .card:first-child {
-                order: 1;
-            }
-            
-            .card:last-child {
-                order: 2;
-            }
-            
             .content-wrapper {
                 display: flex;
                 flex-direction: column;
