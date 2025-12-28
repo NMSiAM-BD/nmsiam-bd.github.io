@@ -1,44 +1,52 @@
-
+<script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize with 3 default course rows
+            // Initialize with 3 default courses
             initializeCourses();
             calculateCGPA();
             
+            // Course counter
+            let courseCounter = 3;
+            
             // Function to create a course row
-            function createCourseRow(courseNum) {
+            function createCourseRow(courseNumber) {
                 const row = document.createElement('tr');
-                row.dataset.id = Date.now() + Math.random(); // Unique ID for each row
+                row.dataset.id = 'course-' + Date.now();
                 
                 row.innerHTML = `
                     <td>
-                        <input type="text" class="course-name" placeholder="Course ${courseNum}" value="Course ${courseNum}">
+                        <input type="text" class="course-input course-name" 
+                               placeholder="Course ${courseNumber}" 
+                               value="Course ${courseNumber}">
                     </td>
                     <td>
-                        <input type="number" class="credit" min="0.5" max="10" step="0.5" placeholder="3" value="">
+                        <input type="number" class="course-input credit" 
+                               placeholder="3" 
+                               min="0.5" max="10" step="0.5">
                     </td>
                     <td>
-                        <input type="number" class="grade-point" min="0.0" max="4.0" step="0.1" placeholder="0.0" value="">
+                        <input type="number" class="course-input grade-point" 
+                               placeholder="0.0" 
+                               min="0.0" max="4.0" step="0.1">
                     </td>
-                    <td>
-                        <button class="action-btn delete-btn" title="Delete Course">
+                    <td class="action-cell">
+                        <button class="delete-btn" title="Delete Course">
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </td>
                 `;
                 
                 // Add event listeners to inputs
-                const inputs = row.querySelectorAll('input');
+                const inputs = row.querySelectorAll('.course-input');
                 inputs.forEach(input => {
                     input.addEventListener('input', function() {
                         // Remove error class when user starts typing
-                        this.classList.remove('error-input');
+                        this.classList.remove('error');
                         
                         if (document.getElementById('autoCalculate').checked) {
                             calculateCGPA();
                         }
                     });
                     
-                    // Validate on blur
                     input.addEventListener('blur', function() {
                         validateInput(this);
                         if (document.getElementById('autoCalculate').checked) {
@@ -48,50 +56,57 @@
                 });
                 
                 // Add event listener to delete button
-                row.querySelector('.delete-btn').addEventListener('click', function() {
-                    if (document.getElementById('coursesTable').children.length > 1) {
+                const deleteBtn = row.querySelector('.delete-btn');
+                deleteBtn.addEventListener('click', function() {
+                    const table = document.getElementById('coursesTable');
+                    if (table.children.length > 1) {
                         row.remove();
                         updateCourseNames();
                         if (document.getElementById('autoCalculate').checked) {
                             calculateCGPA();
                         }
                     } else {
-                        alert('You must have at least one course. You can reset it instead.');
+                        alert('You need at least one course. Try resetting instead.');
                     }
                 });
                 
                 return row;
             }
             
-            // Function to validate individual input
+            // Function to validate input
             function validateInput(input) {
                 if (input.classList.contains('credit')) {
                     const value = parseFloat(input.value);
-                    if (input.value.trim() !== '' && (value < 0.5 || value > 10 || isNaN(value))) {
-                        input.classList.add('error-input');
+                    if (input.value.trim() !== '' && (isNaN(value) || value < 0.5 || value > 10)) {
+                        input.classList.add('error');
                         return false;
                     }
                 } else if (input.classList.contains('grade-point')) {
                     const value = parseFloat(input.value);
-                    if (input.value.trim() !== '' && (value < 0.0 || value > 4.0 || isNaN(value))) {
-                        input.classList.add('error-input');
+                    if (input.value.trim() !== '' && (isNaN(value) || value < 0.0 || value > 4.0)) {
+                        input.classList.add('error');
                         return false;
                     }
                 }
-                input.classList.remove('error-input');
+                input.classList.remove('error');
                 return true;
             }
             
-            // Function to update course names
+            // Function to update course names after deletion
             function updateCourseNames() {
                 const rows = document.querySelectorAll('#coursesTable tr');
                 rows.forEach((row, index) => {
                     const courseNameInput = row.querySelector('.course-name');
+                    // Only update if it's still a default name
                     if (courseNameInput.value.startsWith('Course ')) {
                         courseNameInput.value = `Course ${index + 1}`;
                     }
                     courseNameInput.placeholder = `Course ${index + 1}`;
                 });
+                
+                // Update course counter
+                courseCounter = rows.length;
+                document.getElementById('totalCourses').textContent = courseCounter;
             }
             
             // Initialize with 3 default courses
@@ -104,17 +119,18 @@
                     table.appendChild(row);
                 }
                 
-                document.getElementById('totalCourses').textContent = table.children.length;
+                courseCounter = 3;
+                document.getElementById('totalCourses').textContent = courseCounter;
             }
             
             // Add Course Button
             document.getElementById('addCourse').addEventListener('click', function() {
                 const table = document.getElementById('coursesTable');
-                const courseCount = table.children.length + 1;
-                const newRow = createCourseRow(courseCount);
-                
+                courseCounter++;
+                const newRow = createCourseRow(courseCounter);
                 table.appendChild(newRow);
-                document.getElementById('totalCourses').textContent = table.children.length;
+                
+                document.getElementById('totalCourses').textContent = courseCounter;
                 
                 if (document.getElementById('autoCalculate').checked) {
                     calculateCGPA();
@@ -150,15 +166,16 @@
                     const creditInput = row.querySelector('.credit');
                     const gradeInput = row.querySelector('.grade-point');
                     
-                    // Validate inputs first
+                    // Validate inputs
                     const creditValid = validateInput(creditInput);
                     const gradeValid = validateInput(gradeInput);
                     
                     const credit = parseFloat(creditInput.value) || 0;
                     const gradePoint = parseFloat(gradeInput.value) || 0;
                     
-                    // Only add to calculation if both fields are valid and not empty
-                    if (creditInput.value.trim() !== '' && gradeInput.value.trim() !== '' && creditValid && gradeValid) {
+                    // Only calculate if both fields are valid and not empty
+                    if (creditInput.value.trim() !== '' && gradeInput.value.trim() !== '' && 
+                        creditValid && gradeValid) {
                         if (credit >= 0.5 && credit <= 10 && gradePoint >= 0 && gradePoint <= 4.0) {
                             totalCredits += credit;
                             totalGradePoints += credit * gradePoint;
@@ -173,17 +190,16 @@
                     cgpa = totalGradePoints / totalCredits;
                 }
                 
-                // Calculate percentage (assuming 4.0 scale)
+                // Calculate percentage
                 const percentage = (cgpa / 4.0) * 100;
                 
                 // Update UI
                 document.getElementById('cgpaValue').textContent = cgpa.toFixed(2);
                 document.getElementById('percentageValue').textContent = percentage.toFixed(0) + '%';
-                document.getElementById('totalCourses').textContent = rows.length;
                 document.getElementById('totalCredits').textContent = totalCredits.toFixed(1);
                 document.getElementById('totalGradePoints').textContent = totalGradePoints.toFixed(2);
                 
-                // Show warning if not all courses have valid data
+                // Color indication for incomplete data
                 if (validCourses < rows.length) {
                     document.getElementById('cgpaValue').style.color = '#e74c3c';
                     document.getElementById('percentageValue').style.color = '#e74c3c';
@@ -193,4 +209,4 @@
                 }
             }
         });
-    
+    </script>
