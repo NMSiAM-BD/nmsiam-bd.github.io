@@ -246,21 +246,57 @@
             color: #aaa;
         }
         
-        /* Grade Select Styling */
+        /* Grade Select Styling - MOBILE FIXED */
         .grade-select {
             width: 100%;
-            padding: 10px;
+            padding: 12px; /* Increased padding */
             border: 1px solid #ddd;
             border-radius: 6px;
-            font-size: 0.95rem;
+            font-size: 1rem; /* Increased font size */
             transition: border-color 0.3s;
             background-color: white;
             cursor: pointer;
+            height: 46px; /* Fixed height */
+            -webkit-appearance: none; /* Remove default styling on iOS */
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c3e50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 40px; /* Space for arrow */
         }
         
         .grade-select:focus {
             border-color: #4b6cb7;
             outline: none;
+        }
+        
+        /* Mobile specific grade select styling */
+        @media (max-width: 768px) {
+            .grade-select {
+                padding: 14px; /* Even more padding on mobile */
+                font-size: 1.05rem; /* Larger font on mobile */
+                height: 50px; /* Taller on mobile */
+                min-height: 50px; /* Minimum height */
+                background-size: 18px; /* Larger arrow */
+                background-position: right 15px center;
+                padding-right: 45px; /* More space for arrow */
+            }
+            
+            /* Make sure select options are visible on mobile */
+            .grade-select option {
+                font-size: 1rem;
+                padding: 12px;
+                min-height: 44px;
+            }
+            
+            /* Prevent zoom on iOS when selecting */
+            @media (max-width: 480px) {
+                .grade-select {
+                    font-size: 16px; /* Prevents iOS zoom */
+                }
+            }
         }
         
         /* Fixed first column in previous table */
@@ -346,8 +382,9 @@
         
         @media (max-width: 768px) {
             .btn {
-                padding: 10px 15px;
-                font-size: 0.95rem;
+                padding: 14px 18px; /* Slightly larger on mobile */
+                font-size: 1rem;
+                min-height: 50px; /* Ensure consistent height */
             }
         }
         
@@ -541,6 +578,45 @@
             
             .results-card {
                 min-height: 350px;
+            }
+            
+            /* Prevent horizontal scroll */
+            html, body {
+                overflow-x: hidden;
+                max-width: 100%;
+            }
+            
+            /* Ensure table cells don't cause overflow */
+            .courses-table {
+                table-layout: fixed;
+                width: 100%;
+            }
+            
+            .courses-table td, 
+            .courses-table th {
+                word-break: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            /* Adjust column widths for mobile */
+            .courses-table th:nth-child(1),
+            .courses-table td:nth-child(1) {
+                width: 35%;
+            }
+            
+            .courses-table th:nth-child(2),
+            .courses-table td:nth-child(2) {
+                width: 20%;
+            }
+            
+            .courses-table th:nth-child(3),
+            .courses-table td:nth-child(3) {
+                width: 30%;
+            }
+            
+            .courses-table th:nth-child(4),
+            .courses-table td:nth-child(4) {
+                width: 15%;
             }
         }
         
