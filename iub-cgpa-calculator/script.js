@@ -19,6 +19,15 @@
             initializePreviousResult();
             initializeCourses();
             calculateCGPA();
+            
+            // Fix for iOS select zoom issue
+            const gradeSelects = document.querySelectorAll('.grade-select');
+            gradeSelects.forEach(select => {
+                select.addEventListener('focus', function() {
+                    // Prevent iOS zoom
+                    this.style.fontSize = '16px';
+                });
+            });
         });
         
         let courseCounter = 3;
@@ -121,6 +130,24 @@
                 this.classList.remove('error');
                 if (document.getElementById('autoCalculate').checked) {
                     calculateCGPA();
+                }
+                
+                // iOS fix - revert font size after selection
+                if (window.innerWidth <= 768) {
+                    this.style.fontSize = '1.05rem';
+                }
+            });
+            
+            // Fix for iOS focus
+            gradeSelect.addEventListener('focus', function() {
+                if (window.innerWidth <= 768) {
+                    this.style.fontSize = '16px';
+                }
+            });
+            
+            gradeSelect.addEventListener('blur', function() {
+                if (window.innerWidth <= 768) {
+                    this.style.fontSize = '1.05rem';
                 }
             });
             
@@ -304,3 +331,4 @@
                 document.getElementById('percentageValue').style.color = '#27ae60';
             }
         }
+
