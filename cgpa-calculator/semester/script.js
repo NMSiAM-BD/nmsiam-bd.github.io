@@ -33,7 +33,10 @@
                     </button>
                 </td>
             `;
-            
+                
+            // Auto-update copyright year
+        document.getElementById("copyright-year").textContent = new Date().getFullYear();
+                
             // Add event listeners to inputs
             const inputs = row.querySelectorAll('.course-input');
             inputs.forEach(input => {
