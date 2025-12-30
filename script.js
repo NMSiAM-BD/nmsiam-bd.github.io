@@ -1,7 +1,7 @@
 // Let's keep the email address a secret.
         document.addEventListener("DOMContentLoaded", function() {
-            let encodedUser = "aGVsbG8=";
-            let encodedDomain = "bm9vcm1vaGFtbWFkc2lhbS5jb20=";
+            let encodedUser = "aW5mbw=";
+            let encodedDomain = "bm1zaWFtLmNvbS5iZA=";
             let user = atob(encodedUser);
             let domain = atob(encodedDomain);
             document.getElementById("email").innerHTML = user + "@" + domain;
