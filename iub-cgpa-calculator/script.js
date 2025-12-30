@@ -43,7 +43,11 @@
                            min="0" step="0.5">
                 </td>
             `;
-            
+                
+            // Auto-update copyright year
+        document.getElementById("copyright-year").textContent = new Date().getFullYear();
+
+                
             // Add event listeners to previous result inputs
             const inputs = row.querySelectorAll('.previous-input');
             inputs.forEach(input => {
