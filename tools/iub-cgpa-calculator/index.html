@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IUB CGPA Calculator</title>
+    <link href="style.css" rel="stylesheet">
+    <meta name="google-site-verification" content="8yE2dU9-CF3mVlTiGjeBAC5tI_l_wZyLVhvF_nVAMas" />
 
+    <!-- Primary Meta Tags -->
+<meta name="description" content="Calculate your IUB CGPA accurately with our free IUB CGPA Calculator based on the Independent University, Bangladesh grading system." />
+<meta name="keywords" content="IUB CGPA Calculator, Independent University Bangladesh CGPA, IUB GPA Calculator, IUB Result Calculator, IUB Grading System" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="Noor Mohammad Siam" />
+<link rel="canonical" href="https://nmsiam-bd.github.io/iub-cgpa-calculator" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="IUB CGPA Calculator | Independent University, Bangladesh" />
+<meta property="og:description" content="Free IUB CGPA Calculator for Independent University, Bangladesh students to calculate CGPA accurately and easily." />
+<meta property="og:url" content="https://nmsiam-bd.github.io/iub-cgpa-calculator" />
+<meta property="og:site_name" content="N M SiAM - Noor Mohammad Siam" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="IUB CGPA Calculator | Independent University, Bangladesh" />
+<meta name="twitter:description" content="Calculate your CGPA using the official grading system of Independent University, Bangladesh." />
+
+    
+</head>
+<body>
+   <div class="main-container">
+        <header>
+            <h1>IUB CGPA Calculator</h1>
+            <p>Calculate your CGPA with previous results</p>
+        </header>
+        
+        <div class="disclaimer">
+            <h3><span class="disclaimer-icon">⚠️</span> Disclaimer</h3>
+            <p style="text-align: justify;">This calculator is a great way to track your progress! However, please remember it is an unofficial tool. Always verify your final CGPA with the official IUB grade sheet to ensure accuracy.</p>
+        </div>
+        
+        <div class="content-wrapper">
+            <div class="card">
+                <div class="previous-result-section">
+                    <h3>Previous Result <span class="info-icon" title="Leave blank if you don't have previous results">i</span></h3>
+                    <table class="previous-table" id="previousTable">
+                        <thead>
+                            <tr>
+                                <th>Courses</th>
+                                <th>Previous CGPA</th>
+                                <th>Previous Total Credit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="previousTableBody">
+                            <!-- Previous result row will be here -->
+                        </tbody>
+                    </table>
+                    <div class="previous-info">Note: Fill previous CGPA and total credits from your transcript. Leave blank if you don't have previous results.</div>
+                </div>
+                
+                <h2>Current Courses</h2>
+                
+                <div class="courses-content">
+                    <table class="courses-table" id="coursesTable">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Credit</th>
+                                <th>Grade</th>
+                                <th class="action-cell">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="coursesTableBody">
+                            <!-- Courses will be added here by JavaScript -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="btn-group">
+                        <button class="btn btn-add" id="addCourse">
+                            <span class="icon">+</span> Add Course
+                        </button>
+                        <button class="btn btn-reset" id="resetAll">
+                            <span class="icon">↻</span> Reset All
+                        </button>
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="autoCalculate" checked>
+                        <label for="autoCalculate">Auto-calculate as I make changes</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card results-card">
+                <h2>Calculate CGPA</h2>
+                
+                <div class="results-top-section">
+                    <div class="cgpa-display">
+                        <div class="cgpa-label">Overall CGPA</div>
+                        <div class="cgpa-value" id="cgpaValue">0.00</div>
+                        <div class="out-of">Out of 4.00</div>
+                        <div class="percentage" id="percentageValue">0%</div>
+                    </div>
+                    
+                    <button class="btn btn-calculate" id="calculateBtn">
+                        <span class="icon">=</span> Calculate Overall CGPA
+                    </button>
+                </div>
+                
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalCourses">3</div>
+                        <div class="stat-label">Current Courses</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalCredits">0.0</div>
+                        <div class="stat-label">Earned Credits</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalGradePoints">0.00</div>
+                        <div class="stat-label">Total Grade</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            &copy; <span id="copyright-year"> 2026 </span>, <strong><a href="https://www.nmsiam.com.bd/" style="text-decoration: none; color: inherit;">N M SiAM</a></strong> | All rights reserved.<br>
+Developed by <strong><a href="https://www.noormohammadsiam.com/" style="text-decoration: none; color: inherit;">Noor Mohammad Siam</a></strong>
+        </footer>
+    </div> 
+  <script src="script.js"></script>
+  </body>
+</html>
