@@ -1,4 +1,4 @@
-![IUB CGPA Calculator](assets/iub-cgpa-calculator/favicon.webp)
+![IUB CGPA Calculator](./assets/iub-cgpa-calculator/favicon.webp)
 # IUB CGPA Calculator
 
 An accurate and user-friendly CGPA calculator for **Independent University, Bangladesh (IUB)**.  
