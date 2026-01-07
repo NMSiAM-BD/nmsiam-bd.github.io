@@ -1,4 +1,4 @@
-<img src="https://nmsiam-bd.github.io/assets/iub-cgpa-calculator/favicon.webp" alt="IUB CGPA Calculator" style="width: 30%; height: auto;">
+<img src="https://nmsiam-bd.github.io/assets/iub-cgpa-calculator/favicon.webp" alt="IUB CGPA Calculator" style="width: 40%; height: auto; text-align: center;">
 
 ## IUB CGPA Calculator
 
