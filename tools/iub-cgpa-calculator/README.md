@@ -1,5 +1,6 @@
-<img src="https://nmsiam-bd.github.io/assets/iub-cgpa-calculator/favicon.webp" alt="IUB CGPA Calculator" style="width: 40%; height: auto; text-align: center;">
-
+<p align="center">
+  <img src="https://nmsiam-bd.github.io/assets/iub-cgpa-calculator/favicon.webp" alt="IUB CGPA Calculator" style="width: 40%; height: auto; text-align: center;">
+</p>
 ## IUB CGPA Calculator
 
 An accurate and user-friendly CGPA calculator for **Independent University, Bangladesh (IUB)**.  
