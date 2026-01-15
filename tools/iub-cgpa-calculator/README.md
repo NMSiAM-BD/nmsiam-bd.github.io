@@ -22,7 +22,7 @@ Calculate semester-wise GPA, cumulative CGPA, export results, and share easily.
 
 ## 🌐 Live Demo
 
-👉 Website: https://iubhub.pages.dev/tools/iub-cgpa-calculator  
+👉 Website: https://nmsiam.pages.dev/tools/iub-cgpa-calculator  
 
 ---
 
