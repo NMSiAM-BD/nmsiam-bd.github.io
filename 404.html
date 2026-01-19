@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | 404 Error</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .oops {
+            font-size: 5rem;
+            font-weight: 900;
+            color: #3b82f6;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            color: #1e293b;
+            line-height: 1;
+            margin: 10px 0;
+            text-shadow: 3px 3px 0 rgba(59, 130, 246, 0.1);
+        }
+        
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        
+        .url-after-title {
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+        
+        .error-message {
+            font-size: 1.25rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .missing-url-container {
+            background-color: #fee;
+            border: 2px dashed #f8a5a5;
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin: 0 auto 40px;
+            max-width: 700px;
+            width: calc(100% - 40px);
+        }
+        
+        .url-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #000;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .url-path {
+            color: #b71c1c;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            word-break: break-all;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            display: inline-block;
+            max-width: 100%;
+            text-align: center;
+            padding: 5px 0;
+            line-height: 1.4;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        
+        .back-button, .home-button {
+            display: inline-block;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            min-width: 180px;
+        }
+        
+        .back-button {
+            background: #f8fafc;
+            color: #3b82f6;
+            border-color: #3b82f6;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
+        }
+        
+        .home-button {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+        }
+        
+        .back-button:before, .home-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            transition: all 0.3s;
+            z-index: -1;
+        }
+        
+        .back-button:before {
+            background: #3b82f6;
+        }
+        
+        .home-button:before {
+            background: #1d4ed8;
+        }
+        
+        .back-button:hover:before, .home-button:hover:before {
+            width: 100%;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+            color: white;
+        }
+        
+        .home-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+            border-color: #1d4ed8;
+        }
+        
+        .back-button i {
+            margin-right: 10px;
+        }
+        
+        .home-button i {
+            margin-right: 10px;
+        }
+        
+        /* Circle Dot Loading Animation */
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            gap: 8px;
+            height: 30px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #3b82f6;
+            animation: pulse-dot 1.5s infinite ease-in-out;
+        }
+        
+        .dot:nth-child(1) {
+            animation-delay: -0.3s;
+        }
+        
+        .dot:nth-child(2) {
+            animation-delay: -0.15s;
+        }
+        
+        .dot:nth-child(3) {
+            animation-delay: 0s;
+        }
+        
+        .dot:nth-child(4) {
+            animation-delay: 0.15s;
+        }
+        
+        .dot:nth-child(5) {
+            animation-delay: 0.3s;
+        }
+        
+        @keyframes pulse-dot {
+            0%, 60%, 100% {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+            30% {
+                opacity: 1;
+                transform: scale(1.1);
+                background-color: #1d4ed8;
+            }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .missing-url-container {
+                width: calc(100% - 30px);
+                padding: 16px 18px;
+                margin: 0 auto 35px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .oops {
+                font-size: 3.5rem;
+            }
+            
+            .error-code {
+                font-size: 6rem;
+            }
+            
+            .error-title {
+                font-size: 2rem;
+                margin-bottom: 8px;
+            }
+            
+            .url-after-title {
+                margin-bottom: 20px;
+            }
+            
+            .error-message {
+                font-size: 1.1rem;
+                padding: 0 10px;
+                margin-bottom: 25px;
+            }
+            
+            .missing-url-container {
+                padding: 14px 16px;
+                margin: 0 auto 30px;
+                width: calc(100% - 20px);
+            }
+            
+            .url-path {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .back-button, .home-button {
+                padding: 14px 30px;
+                font-size: 1rem;
+                min-width: 160px;
+            }
+            
+            .button-group {
+                gap: 12px;
+            }
+            
+            .loading-dots {
+                margin-top: 25px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .oops {
+                font-size: 2.8rem;
+            }
+            
+            .error-code {
+                font-size: 5rem;
+            }
+            
+            .error-title {
+                font-size: 1.7rem;
+                margin-bottom: 6px;
+            }
+            
+            .url-after-title {
+                margin-bottom: 18px;
+            }
+            
+            .error-message {
+                font-size: 1rem;
+                padding: 0;
+                margin-bottom: 25px;
+            }
+            
+            .missing-url-container {
+                padding: 12px 14px;
+                margin: 0 auto 25px;
+                width: 100%;
+                border-radius: 10px;
+            }
+            
+            .url-label {
+                font-size: 0.8rem;
+                margin-bottom: 8px;
+            }
+            
+            .url-path {
+                font-size: 0.95rem;
+                padding: 4px 0;
+                line-height: 1.5;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .back-button, .home-button {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+                width: 90%;
+                max-width: 280px;
+                min-width: auto;
+            }
+            
+            .loading-dots {
+                margin-top: 20px;
+                gap: 6px;
+            }
+            
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .oops {
+                font-size: 2.5rem;
+            }
+            
+            .error-code {
+                font-size: 4.5rem;
+            }
+            
+            .error-title {
+                font-size: 1.5rem;
+            }
+            
+            .error-message {
+                font-size: 0.95rem;
+            }
+            
+            .missing-url-container {
+                padding: 10px 12px;
+            }
+            
+            .url-path {
+                font-size: 0.9rem;
+            }
+            
+            .loading-dots {
+                margin-top: 15px;
+            }
+        }
+        
+        /* Animation for 404 text */
+        @keyframes pulse {
+            0% { opacity: 0.9; }
+            50% { opacity: 1; }
+            100% { opacity: 0.9; }
+        }
+        
+        .error-code {
+            animation: pulse 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="oops">Oops!</h1>
+        <div class="error-code">404</div>
+        <h2 class="error-title">Page Not Found!</h2>
+        
+        <!-- Missing URL is now directly after the Page Not Found title -->
+        <div class="missing-url-container url-after-title">
+            <span class="url-label">Missing URL Path:</span>
+            <div id="missing-url-text" class="url-path"></div>
+        </div>
+        
+        <p class="error-message">
+            We can't seem to find the page you are looking for. The page might have been moved, deleted, or perhaps you mistyped the URL.
+        </p>
+        
+        <div class="button-group">
+            <a href="#" class="back-button" id="go-back-btn">
+                <i class="fas fa-arrow-left"></i> Go Back
+            </a>
+            <a href="/" class="home-button">
+                <i class="fas fa-home"></i> Go Back Home
+            </a>
+        </div>
+        
+        <!-- Circle Dot Loading Animation -->
+        <div class="loading-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <script>
+        // Add a simple interactive effect to the 404 text
+        document.addEventListener('DOMContentLoaded', function() {
+            const errorCode = document.querySelector('.error-code');
+            const missingUrlText = document.getElementById('missing-url-text');
+            const goBackBtn = document.getElementById('go-back-btn');
+            
+            // Get the current URL path
+            const currentPath = window.location.pathname;
+            const currentUrl = window.location.href;
+            
+            // Display the missing URL path
+            if (currentPath && currentPath !== '/404.html' && currentPath !== '/') {
+                missingUrlText.textContent = currentPath;
+            } else if (currentPath === '/') {
+                // If someone directly visits 404 page, show the full URL
+                missingUrlText.textContent = currentUrl;
+            } else {
+                // Fallback to full URL
+                missingUrlText.textContent = currentUrl;
+            }
+            
+            // Go Back button functionality
+            goBackBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    // If no history, go to home page
+                    window.location.href = '/';
+                }
+            });
+            
+            errorCode.addEventListener('mouseover', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            errorCode.addEventListener('mouseout', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
